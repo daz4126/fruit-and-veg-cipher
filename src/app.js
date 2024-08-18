@@ -33,7 +33,7 @@ const table = `
 `
 
 surge({
-  start: $ => e => {
+  start: $ => {
     $.instructions.hidden = true
     $.gameOver.hidden = true
     $.game.hidden = false
@@ -44,24 +44,26 @@ surge({
     $.score.value = 10
     $.correct.value = 0
     $.table.append(table)
-    $._key = pickRandom(keys).toUpperCase()
-    $._word = pickRandom(words).toUpperCase()
+    $._key = ($._id ? keys[($._id * 29 + 20)%keys.length] : pickRandom(keys)).toUpperCase()
+    $._word = ($._id ? words[($._id * 20 + 29)%words.length] : pickRandom(words)).toUpperCase()
+    $._id = null
     $._remainingWords = words.filter(w => w !== $._word)
     $.word.value = encrypt($._word,$._key)
   },
-  clue: $ => e => {
+  clue: $ => {
     const word = pickRandom($._remainingWords).toUpperCase()
     $.clues.append(`<h1>${word}:</h1><h1>${encrypt(word,$._key)}</h1>`)
     $.score.value --
   },
-  updateGrid: $ => e => {
+  updateGrid: ($,e) => {
     const char = $._word[Number(e.target.id.split("-")[1])]
     const letter = char === "J" ? "I" : char
     const cipher = $._key + [...alphabet].filter(x => !$._key.includes(x)).join``
     const index = cipher.indexOf(letter)
-    $.table.querySelectorAll("input")[index] = e.target.value
+    const cell = $.table.querySelectorAll("input")[index]
+    cell.value = e.target.value
   },
-  updateSolution: $ => e => {
+  updateSolution: ($,e) => {
     const array = encrypt($._word,$._key).split("  ")
     const letter = e.target.value.toUpperCase()
     const fruit = e.target.dataset.fruit
@@ -72,8 +74,8 @@ surge({
       }
     })
   },
-    check: $ => e => {
-     const correctLetters = Array.from($.solution.childNodes).reduce((sum,node,i) => sum + (node.value.toUpperCase() === $._word[i] ? 1 : 0),0)
+    check: $ => {
+           const correctLetters = Array.from($.solution.childNodes).reduce((sum,node,i) => sum + (node.value.toUpperCase() === $._word[i] ? 1 : 0),0)
      $.correct.value = correctLetters
      if(correctLetters === 5){
          jsConfetti.addConfetti()
@@ -89,7 +91,6 @@ surge({
        $.message.value = "Hard luck, you didn't break the code"
      }
   },
-  clear: $ => e => {
-    Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = "")
-  }
+  clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
+  connect: $ => [$._url,$._id] = window.location.href.split("#")
 })
