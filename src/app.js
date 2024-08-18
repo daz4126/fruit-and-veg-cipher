@@ -46,7 +46,7 @@ surge({
     $.table.append(table)
     $._key = ($._id ? keys[($._id * 29 + 2029)%keys.length] : pickRandom(keys)).toUpperCase()
     $._word = ($._id ? words[($._id * 2029 + 29)%words.length] : pickRandom(words)).toUpperCase()
-    console.log($._key,$._word)
+    console.log($._id,$._key,$._word)
     $._id = null
     $._remainingWords = words.filter(w => w !== $._word)
     $.word.value = encrypt($._word,$._key)
