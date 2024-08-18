@@ -73,9 +73,13 @@ td{
   font-size: 32px;
 }
 
+.buttons{
+  margin: 0 auto;
+}
+
 button{
-  display: block;
-  margin: 1em auto;
+  display: inline-block;
+  margin: 1em;
   background: #60c923;
   border: none;
   border-radius: 0.6em;
