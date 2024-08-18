@@ -44,8 +44,8 @@ surge({
     $.score.value = 10
     $.correct.value = 0
     $.table.append(table)
-    $._key = ($._id ? keys[($._id * 29 + 20)%keys.length] : pickRandom(keys)).toUpperCase()
-    $._word = ($._id ? words[($._id * 20 + 29)%words.length] : pickRandom(words)).toUpperCase()
+    $._key = ($._id ? keys[($._id * 29 + 2029)%keys.length] : pickRandom(keys)).toUpperCase()
+    $._word = ($._id ? words[($._id * 2029 + 29)%words.length] : pickRandom(words)).toUpperCase()
     $._id = null
     $._remainingWords = words.filter(w => w !== $._word)
     $.word.value = encrypt($._word,$._key)
@@ -92,5 +92,5 @@ surge({
      }
   },
   clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
-  connect: $ => [$._url,$._id] = window.location.href.split("#")
+  connect: $ => $._id = Math.round(new Date(2024,7,18) - new Date().setHours(0,0,0,0))
 })
