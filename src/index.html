@@ -12,9 +12,13 @@
         <h1 id="logo">Fruit & Veg Cipher</h1>
         <main data-surge>
         <section id="instructions">
-            <p>Decrypt the five-letter code word. Every letter has been ecrypted as a piece of fruit and a vegetable.</p>
-            <button data-action="start">Play Game</button>
-            <p>The code is made by placing the letters in a 5 x 5 grid with a 5-letter keyword written on the first row. The rest of the alphabet is then written in order. For example, if the keyword was "RADIO", the cipher grid would look like this:</p>
+            <h2>Mission:</h2>
+        <p> Decrypt the secret enemy code word</p>
+        <button data-action="start">Break the Code</button>
+        <h2>Top secret intelligence: </h2>
+        <p> The enemy are using pictures of fruit and veg to send secret messages.</p>
+         <p> The code is made by writing a 5-letter keyword on the first row of a 5 x 5 grid then writing the rest of the alphabet after (note that I and J are considered the same letter).</p>
+        <p> Example: if the keyword was "RADIO", the cipher grid would look like this</p>
                 <table>
                   <thead>
                       <td></td>
@@ -31,24 +35,29 @@
                   <tr><td>🍑</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</tr>
                 </table>
                 <p>So the letter "O" would be "🍏🥕" and the letter "G" would be "🍌🥕"</p>
-                 <p>You can ask for a clue and will be given a 5-letter word and its encryption. This will help you start to fill in the grid. Be careful though - you lose a point for every clue or incorrect check.</p>
-              </section>
-              <section id="game" hidden>
-                  <h1 id="word"></h1>
-                  <h1 id="solution"><input class="letter" id="letter-0" data-action="updateGrid"><input class="letter" id="letter-1" data-action="updateGrid"><input class="letter" id="letter-2" data-action="updateGrid"><input class="letter" id="letter-3" data-action="updateGrid"><input class="letter" id="letter-4" data-action="updateGrid"></h1>
-                  <h1>Score: <strong id="score">10</strong></h1>
-                  <button data-action="check">Check Answer</button>
-                  <p>You have <strong id="correct">0</strong> correct letters.</p>
-                  <button data-action="clear">Clear Grid</button>
-                  <div id="table"></div>
-                  <button data-action="clue">Clue</button>
-                  <div id="clues">
-              </section>
-              <section id="gameOver" hidden>
-                  <h1 id="message">Well Done, you cracked the code!</h1>
-                  <p>Your score was <strong id="finalScore"></strong>.</p>
-                  <button data-action="start">Play Again</button?
-              </section>
-        </main>
+                <p>Luckily some of our best analysts have been able to find some 5-letter words and the encryption to help.</p>
+        <p>Example: PRIDE = 🍉🥦 🍏🥦 🍏🍄 🍏🥔 🍌🥔</p>
+        <p> Be careful though - every clue generated will alert the enemy.</p>
+        <h2> Good Luck!</h2>
+        <button data-action="start">Break the Code</button>
+      </section>
+      <section id="game" hidden>
+      <h1 id="word"></h1>
+      
+        <h1 id="solution"><input class="letter" id="letter-0" data-action="updateGrid"><input class="letter" id="letter-1" data-action="updateGrid"><input class="letter" id="letter-2" data-action="updateGrid"><input class="letter" id="letter-3" data-action="updateGrid"><input class="letter" id="letter-4" data-action="updateGrid"></h1>
+        <h1>Score: <strong id="score">10</strong></h1>
+        <button data-action="check">Check Answer</button>
+        <p>You have <strong id="correct">0</strong> correct letters.</p>
+        <button data-action="clear">Clear Grid</button>
+        <div id="table"></div>
+        <button data-action="clue">Clue</button>
+        <div id="clues">
+        </section>
+        <section id="gameOver" hidden>
+          <h1 id="message">Well Done, you cracked the code!</h1>
+          <p>Your score was <strong id="finalScore"></strong>.</p>
+          <button data-action="start">Play Again</button?
+        </section>
+    </main>
     </body>
 </html>
