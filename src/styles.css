@@ -8,7 +8,7 @@ main{
   font-family: "Special Elite";
   font-size: 48px;
   text-align: center;
-  color: #662200;
+  color: #418537;
   margin: 0;
   padding: 0;
 }
@@ -46,7 +46,7 @@ h1{
 
 p{
   text-align: center;
-  color: #444;
+  color: #696969;
   font-size: 18px;
 }
 
@@ -75,7 +75,7 @@ td{
 button{
   display: block;
   margin: 1em auto;
-  background: #f7cc44;
+  background: #60c923;
   border: none;
   border-radius: 0.6em;
   padding: 0.8em;
@@ -84,13 +84,13 @@ button{
   font-family: sans-serif;
   font-size: 16px;
   width: 11em;
-  color: #662200;
+  color: #e6e6e6;
 }
 
 #clues h1{
   text-align: center;
-  font-size: 36px;
-  color: #646362;
+  font-size: 28px;
+  color: #696969;
 }
 
 #instructions p{
