@@ -53,7 +53,7 @@ surge({
   clue: $ => {
     const word = pickRandom($._remainingWords).toUpperCase()
     $.clues.append(`<h1>${word}:</h1><h1>${encrypt(word,$._key)}</h1>`)
-    $.score.value --
+    $.score.value -= 3
   },
   updateGrid: ($,e) => {
     const char = $._word[Number(e.target.id.split("-")[1])]
@@ -85,7 +85,8 @@ surge({
      } else {
        $.score.value --
      }
-     if($.score.value === 0){
+     if($.score.value <= 0){
+       $.score.value = 0
        $.game.hidden = true
         $.gameOver.hidden = false
        $.message.value = "Hard luck, you didn't break the code"
