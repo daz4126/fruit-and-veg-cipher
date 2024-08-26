@@ -51,7 +51,6 @@ surge({
     $.word.value = encrypt($._word,$._key)
   },
   clue: $ => {
-    console.log(($._id * 6929 + $._clues * 69)%words.length, $._id)
     const word = ($._id !== null ? words[($._id * 6929 + $._clues * 69)%words.length] : pickRandom($._remainingWords)).toUpperCase()
     $.clues.append(`<h1>${word}:</h1><h1>${encrypt(word,$._key)}</h1>`)
     $._clues ++
@@ -84,7 +83,7 @@ surge({
     })
   },
     check: $ => {
-           const correctLetters = Array.from($.solution.childNodes).reduce((sum,node,i) => sum + (node.value.toUpperCase() === $._word[i] ? 1 : 0),0)
+     const correctLetters = Array.from($.solution.childNodes).reduce((sum,node,i) => sum + (node.value.toUpperCase() === $._word[i] ? 1 : 0),0)
      $.correct.value = correctLetters
      if(correctLetters === 5){
          jsConfetti.addConfetti()
@@ -98,7 +97,7 @@ surge({
      if($.score.value <= 0){
        $.score.value = 0
        $.game.hidden = true
-        $.gameOver.hidden = false
+       $.gameOver.hidden = false
        $.message.value = "Hard luck, you didn't break the code"
        $._id = null
      }
