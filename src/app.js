@@ -56,7 +56,7 @@ surge({
     $._clues ++
     $.score.value -= 3
     if($.score.value <= 0){
-      $.score.value = 0
+      $.finalScore.value = 0
       $.game.hidden = true
       $.gameOver.hidden = false
       $.message.value = "Hard luck, you didn't break the code"
@@ -95,7 +95,7 @@ surge({
        $.score.value --
      }
      if($.score.value <= 0){
-       $.score.value = 0
+       $.finalScore.value = 0
        $.game.hidden = true
        $.gameOver.hidden = false
        $.message.value = "Hard luck, you didn't break the code"
