@@ -52,7 +52,8 @@ surge({
     $.word.value = encrypt($._word,$._key)
   },
   clue: $ => {
-    const word = $._id !== null ? words[($._id * 2929 + $._clues)%words.length] : pickRandom($._remainingWords).toUpperCase()
+    console.log(($._id * 6929 + $._clues)%words.length)
+    const word = $._id !== null ? (words[($._id * 6929 + $._clues)%words.length] : pickRandom($._remainingWords)).toUpperCase()
     $.clues.append(`<h1>${word}:</h1><h1>${encrypt(word,$._key)}</h1>`)
     $._clues ++
     $.score.value -= 3
