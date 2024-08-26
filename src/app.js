@@ -44,6 +44,7 @@ surge({
     $.score.value = 10
     $.correct.value = 0
     $.table.append(table)
+    $._clues = 0
     $._key = ($._id !== null ? keys[($._id * 29 + 2029)%keys.length] : pickRandom(keys)).toUpperCase()
     $._word = ($._id !== null ? words[($._id * 2029 + 29)%words.length] : pickRandom(words)).toUpperCase()
     $._id = null
@@ -51,9 +52,16 @@ surge({
     $.word.value = encrypt($._word,$._key)
   },
   clue: $ => {
-    const word = pickRandom($._remainingWords).toUpperCase()
+    const word = $._id !== null ? words[($._id * 2929 + $._clues)%words.length] : pickRandom($._remainingWords).toUpperCase()
     $.clues.append(`<h1>${word}:</h1><h1>${encrypt(word,$._key)}</h1>`)
+    $._clues ++
     $.score.value -= 3
+    if($.score.value <= 0){
+      $.score.value = 0
+      $.game.hidden = true
+      $.gameOver.hidden = false
+      $.message.value = "Hard luck, you didn't break the code"
+    }
   },
   updateGrid: ($,e) => {
     const char = $._word[Number(e.target.id.split("-")[1])]
