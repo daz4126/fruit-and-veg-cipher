@@ -89,6 +89,7 @@ surge({
          jsConfetti.addConfetti()
          $.game.hidden = true
          $.gameOver.hidden = false
+         $.message.value = $.score > 9 ? "Perfect! You're obviously a Cipher Genius" : $.score > 6 ? "Impressive effort! You're a cipher expert" : $.score > 3 ? "Well done ... you've got some cipher skills" : "Phew ... you only just did it!"
          $.finalScore.value = $.score.value
          $._id = null
      } else {
@@ -103,6 +104,6 @@ surge({
      }
   },
   clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
-  share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`🍏🍌I cracked the Fruit And Veg Cipher🥦🥕!! My score was ${$.finalScore.value}🍆🍑!`}),
+  share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`🍏🍌I cracked the Fruit And Veg Cipher🥦🥕!! My score was ${$.finalScore.value}${$.finalScore > 9 ? "🍆" : $.finalScore > 7 ? "🍌", $.finalScore > 5 ? "🍒" : $.finalScore > 3 "🍑" : "🥔"}!`}),
   connect: $ => $._id = Math.round((new Date().setHours(0,0,0,0) - new Date(2024,7,18))/3600000/24)
 })
