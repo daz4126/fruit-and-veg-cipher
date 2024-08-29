@@ -104,6 +104,6 @@ surge({
      }
   },
   clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
-  share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`🍏🍌I cracked the Fruit And Veg Cipher🥦🥕!! My score was ${$.finalScore.value}${$.finalScore.value > 9 ? "🍄" : $.finalScore.value > 7 ? "🍉" : $.finalScore.value > 5 ? "🍒" : $.finalScore.value > 3 ? "🍌" : "🥔"}!`}),
+  share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`🍏🍌I cracked the Fruit And Veg Cipher🥦🥕!! My score was ${$.finalScore.value}!`}),
   connect: $ => $._id = Math.round((new Date().setHours(0,0,0,0) - new Date(2024,7,18))/3600000/24)
 })
