@@ -89,7 +89,7 @@ surge({
          jsConfetti.addConfetti()
          $.game.hidden = true
          $.gameOver.hidden = false
-         $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius" : $.score.value > 6 ? "Impressive effort! You're a cipher expert" : $.score.value > 3 ? "Well done ... you've got some cipher skills" : "Phew ... you only just did it!") + " The word was ${$._word}"
+         $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius" : $.score.value > 6 ? "Impressive effort! You're a cipher expert" : $.score.value > 3 ? "Well done ... you've got some cipher skills" : "Phew ... you only just did it!") + ` The word was ${$._word}`
          $.finalScore.value = $.score.value
          $._id = null
      } else {
@@ -99,7 +99,7 @@ surge({
        $.finalScore.value = 0
        $.game.hidden = true
        $.gameOver.hidden = false
-       $.message.value = "Hard luck, you didn't break the code. The word was ${$._word}"
+       $.message.value = `Hard luck, you didn't break the code. The word was ${$._word}`
        $._id = null
      }
   },
