@@ -100,11 +100,11 @@ surge({
      }
      if($.score.value <= 0){
         $.finalScore.value = 0
-        $.message.value = `Hard luck, you didn't break the code...`
+        $.message.value = "Hard luck, you didn't break the code..."
         $.game.hidden = true
         $.gameOver.hidden = false
-        $.answer.value =  `The word was ${$._word}`
-        $.share.hidden = $._id ? false : true
+        $.answer.value = `The word was ${$._word}`
+        $.share.hidden = true
         $._id = null
      }
   },
