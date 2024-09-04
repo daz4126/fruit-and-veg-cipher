@@ -87,7 +87,7 @@ surge({
      $.correct.value = correctLetters
      if(correctLetters === 5){
          jsConfetti.addConfetti()
-         $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius" : $.score.value > 6 ? "Impressive effort! You're a cipher expert" : $.score.value > 3 ? "Well done ... you've got some cipher skills" : "Phew ... you only just did it!")
+         $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius!" : $.score.value > 6 ? "Impressive effort! You're a cipher expert!" : $.score.value > 3 ? "Well done ... you've got some cipher skills!" : "Phew ... you only just did it!")
          $.finalScore.value = $.score.value
      } else {
        $.score.value --
