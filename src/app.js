@@ -87,21 +87,22 @@ surge({
      $.correct.value = correctLetters
      if(correctLetters === 5){
          jsConfetti.addConfetti()
-         $.game.hidden = true
-         $.gameOver.hidden = false
-         $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius" : $.score.value > 6 ? "Impressive effort! You're a cipher expert" : $.score.value > 3 ? "Well done ... you've got some cipher skills" : "Phew ... you only just did it!") + ` The word was ${$._word}`
+         $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius" : $.score.value > 6 ? "Impressive effort! You're a cipher expert" : $.score.value > 3 ? "Well done ... you've got some cipher skills" : "Phew ... you only just did it!")
          $.finalScore.value = $.score.value
-         $._id = null
      } else {
        $.score.value --
      }
      if($.score.value <= 0){
        $.finalScore.value = 0
-       $.game.hidden = true
-       $.gameOver.hidden = false
        $.message.value = `Hard luck, you didn't break the code. The word was ${$._word}`
-       $._id = null
      }
+      if(correctLetters === 5 || $.score.value <= 0){
+        $.game.hidden = true
+        $.gameOver.hidden = false
+        $.answer.value =  ` The word was ${$._word}`
+        $.share.hidden = !$._id
+        $._id = null
+      }
   },
   clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
   share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`🍏🍌I cracked the Fruit And Veg Cipher🥦🥕!! My score was ${$.finalScore.value}!`}),
