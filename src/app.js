@@ -99,9 +99,11 @@ surge({
       if(correctLetters === 5 || $.score.value <= 0){
         $.game.hidden = true
         $.gameOver.hidden = false
-        $.answer.value =  ` The word was ${$._word}`
+        $.answer.value =  `The word was ${$._word}`
         $.share.hidden = $._id ? false : true
+        console.log($._id)
         $._id = null
+        console.log($._id)
       }
   },
   clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
