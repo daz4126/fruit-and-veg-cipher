@@ -97,6 +97,7 @@ surge({
        $.message.value = `Hard luck, you didn't break the code...`
      }
       if(correctLetters === 5 || $.score.value <= 0){
+        console.log("game over")
         $.game.hidden = true
         $.gameOver.hidden = false
         $.answer.value =  `The word was ${$._word}`
