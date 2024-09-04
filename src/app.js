@@ -94,13 +94,13 @@ surge({
      }
      if($.score.value <= 0){
        $.finalScore.value = 0
-       $.message.value = `Hard luck, you didn't break the code. The word was ${$._word}`
+       $.message.value = `Hard luck, you didn't break the code...`
      }
       if(correctLetters === 5 || $.score.value <= 0){
         $.game.hidden = true
         $.gameOver.hidden = false
         $.answer.value =  ` The word was ${$._word}`
-        $.share.hidden = !$._id
+        $.share.hidden = $._id ? false : true
         $._id = null
       }
   },
