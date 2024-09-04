@@ -49,6 +49,7 @@ surge({
     $._word = ($._id !== null ? words[($._id * 2029 + 29)%words.length] : pickRandom(words)).toUpperCase()
     $._remainingWords = words.filter(w => w !== $._word)
     $.word.value = encrypt($._word,$._key)
+    console.log($._word)
   },
   clue: $ => {
     const word = ($._id !== null ? words[($._id * 6929 + $._clues * 69)%words.length] : pickRandom($._remainingWords)).toUpperCase()
