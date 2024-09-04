@@ -6,7 +6,7 @@ main{
 
 #logo{
   font-family: "Special Elite";
-  font-size: 48px;
+  font-size: 28px;
   text-align: center;
   color: #418537;
   margin: 0;
@@ -83,7 +83,7 @@ td{
 
 button{
   display: inline-block;
-  margin: 0.2em 1em;
+  margin: 0.05em 1em;
   background: #60c923;
   border: none;
   border-radius: 0.6em;
