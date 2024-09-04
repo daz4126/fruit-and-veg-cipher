@@ -90,23 +90,23 @@ surge({
          jsConfetti.addConfetti()
          $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius!" : $.score.value > 6 ? "Impressive effort! You're a cipher expert!" : $.score.value > 3 ? "Well done ... you've got some cipher skills!" : "Phew ... you only just did it!")
          $.finalScore.value = $.score.value
+         $.game.hidden = true
+         $.gameOver.hidden = false
+         $.answer.value =  `The word was ${$._word}`
+         $.share.hidden = $._id ? false : true
+         $._id = null
      } else {
        $.score.value --
      }
      if($.score.value <= 0){
-       $.finalScore.value = 0
-       $.message.value = `Hard luck, you didn't break the code...`
-     }
-      if(correctLetters === 5 || $.score.value <= 0){
-        console.log("game over")
+        $.finalScore.value = 0
+        $.message.value = `Hard luck, you didn't break the code...`
         $.game.hidden = true
         $.gameOver.hidden = false
         $.answer.value =  `The word was ${$._word}`
         $.share.hidden = $._id ? false : true
-        console.log($._id)
         $._id = null
-        console.log($._id)
-      }
+     }
   },
   clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
   share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`I cracked the 🍏Fruit And Veg🥦 Cipher!! My score was ${$.finalScore.value}!`}),
