@@ -103,7 +103,7 @@ surge({
         $.message.value = "Hard luck, you didn't break the code..."
         $.game.hidden = true
         $.gameOver.hidden = false
-        $.answer.value = `The word was ${$._word}`
+        //$.answer.value = `The word was ${$._word}`
         $.share.hidden = true
         $._id = null
      }
