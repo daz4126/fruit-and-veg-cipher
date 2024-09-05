@@ -32,6 +32,25 @@ const table = `
   </table>
 `
 
+const gameOver = $ => {
+  $.game.hidden = true
+  $.gameOver.hidden = false
+  $.answer.value = `The word was ${$._word}`
+  $.share.hidden = !$._id
+  $._id = null
+}
+
+const win = $ => {
+   jsConfetti.addConfetti()
+   $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius!" :    $.score.value > 6 ? "Impressive effort! You're a cipher expert!" : $.score.value > 1 ? "Well done ... you've got some cipher skills!" : "Phew ... you only just did it!")
+    $.finalScore.value = $.score.value
+}
+
+const lose = $ => {
+  $.finalScore.value = 0
+  $.message.value = "Hard luck, you didn't break the code..."
+}
+
 surge({
   start: $ => {
     $.instructions.hidden = true
@@ -57,13 +76,8 @@ surge({
     $._clues ++
     $.score.value -= 3
     if($.score.value <= 0){
-        $.finalScore.value = 0
-        $.message.value = "Hard luck, you didn't break the code..."
-        $.game.hidden = true
-        $.gameOver.hidden = false
-        $.answer.value = `The word was ${$._word}`
-        $.share.hidden = true
-        $._id = null
+      gameOver($)
+      lose($)
     }
   },
   updateGrid: ($,e) => {
@@ -89,25 +103,14 @@ surge({
      const correctLetters = Array.from($.solution.childNodes).reduce((sum,node,i) => sum + (node.value.toUpperCase() === $._word[i] ? 1 : 0),0)
      $.correct.value = correctLetters
      if(correctLetters === 5){
-         jsConfetti.addConfetti()
-         $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius!" : $.score.value > 6 ? "Impressive effort! You're a cipher expert!" : $.score.value > 1 ? "Well done ... you've got some cipher skills!" : "Phew ... you only just did it!")
-         $.finalScore.value = $.score.value
-         $.game.hidden = true
-         $.gameOver.hidden = false
-         $.answer.value = `The word was ${$._word}`
-         $.share.hidden = $._id ? false : true
-         $._id = null
+        gameOver($)
+        win($)
      } else {
        $.score.value --
      }
      if($.score.value <= 0){
-        $.finalScore.value = 0
-        $.message.value = "Hard luck, you didn't break the code..."
-        $.game.hidden = true
-        $.gameOver.hidden = false
-        $.answer.value = `The word was ${$._word}`
-        $.share.hidden = true
-        $._id = null
+        gameOver($)
+        lose($)
      }
   },
   clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
