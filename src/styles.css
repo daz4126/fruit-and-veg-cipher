@@ -103,7 +103,7 @@ td{
 }
 
 button{
-  margin: 0.05em 1em;
+  margin: 0.1em 1em;
   background: var(--lightgreen);
   border: none;
   border-radius: 0.6em;
@@ -111,7 +111,7 @@ button{
   text-transform: uppercase;
   font-weight: bold;
   font-family: sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   color: #f6f6f6;
 }
 
