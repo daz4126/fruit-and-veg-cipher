@@ -42,7 +42,6 @@ main{
 .letter{
   width: 32px;
   height: 32px;
-  margin: 0 4px;
   text-align: center;
   text-transform: uppercase;
   font-size: 24px;
@@ -72,7 +71,7 @@ p{
 
 table{
   border: collapse;
-  border: var(--green) 5px solid;
+  border: silver 1px solid;
   border-radius: 12px;
   margin: 0.5em auto;
   padding: 0.4em;
@@ -108,7 +107,7 @@ button{
   background: var(--lightgreen);
   border: none;
   border-radius: 0.6em;
-  padding: 0.6em;
+  padding: 1em;
   text-transform: uppercase;
   font-weight: bold;
   font-family: sans-serif;
