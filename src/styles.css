@@ -2,6 +2,7 @@
 
 :root{
   --green: #418537;
+  --lightgreen: #60c923;
 }
 
 main{
@@ -46,10 +47,16 @@ main{
   border-radius: 4px;
 }
 
-h1{
+h1, #mode{
   font-family: "Special Elite";
   color: #696969;
   margin: 0.3em;
+}
+
+#mode{
+  text-align: center;
+  margin: 0;
+  color: #ccc;
 }
 
 p{
@@ -94,7 +101,7 @@ td{
 
 button{
   margin: 0.05em 1em;
-  background: #60c923;
+  background: var(--lightgreen);
   border: none;
   border-radius: 0.6em;
   padding: 0.6em;
