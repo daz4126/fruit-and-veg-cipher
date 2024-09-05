@@ -131,3 +131,7 @@ button:hover{
   max-width: 32em;
   margin: 1em auto;
 }
+
+#gameOver{
+  margin-top: 20px;
+}
