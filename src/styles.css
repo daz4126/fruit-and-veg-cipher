@@ -35,7 +35,7 @@ main{
   text-align: center;
   display: flex;
   justify-content: space-between;
-  width: 12em;
+  width: 14em;
   margin: 0 auto;
 }
 
@@ -48,7 +48,7 @@ main{
   font-family: "Special Elite";
   border: #ddd solid 2px;
   border-radius: 4px;
-  margin: 0 autol
+  margin: 0 autol;
 }
 
 h1, #mode{
