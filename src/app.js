@@ -42,7 +42,7 @@ const gameOver = $ => {
 
 const win = $ => {
    jsConfetti.addConfetti()
-   $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius!" : $.score.value > 6 ? "Impressive effort! You're clearly a cipher expert!" : $.score.value > 1 ? "Well done ... you've got some cipher skills!" : "Phew ... you only just did it!")
+   $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius!" :    $.score.value > 6 ? "Impressive effort! You're a cipher expert!" : $.score.value > 1 ? "Well done ... you've got some cipher skills!" : "Phew ... you only just did it!")
     $.finalScore.value = $.score.value
 }
 
@@ -63,6 +63,7 @@ surge({
     $.score.value = 10
     $.correct.value = 0
     $.table.append(table)
+    $.mode.value = $._id ? "Daily Challenge" : "Practice Mode"
     $._clues = 0
     $._key = ($._id !== null ? keys[($._id * 29 + 2029)%keys.length] : pickRandom(keys)).toUpperCase()
     $._word = ($._id !== null ? words[($._id * 2029 + 29)%words.length] : pickRandom(words)).toUpperCase()
@@ -70,7 +71,6 @@ surge({
     $.word.value = encrypt($._word,$._key)
     if($._id) localStorage.setItem("fruit&veg-cipher:" + (new Date).toLocaleDateString(),true)
     console.log(localStorage.getItem("fruit&veg-cipher:" + (new Date).toLocaleDateString()))
-    console.log($._word)
   },
   clue: $ => {
     const word = ($._id !== null ? words[($._id * 6929 + $._clues * 69)%words.length] : pickRandom($._remainingWords)).toUpperCase()
