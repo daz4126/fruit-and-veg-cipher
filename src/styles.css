@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css2?family=Special+Elite&display=swap);
 
+:root{
+  --green: #418537;
+}
+
 main{
   text-align: center;
 }
@@ -8,7 +12,7 @@ main{
   font-family: "Special Elite";
   font-size: 28px;
   text-align: center;
-  color: #418537;
+  color: var(--green);
   margin: 0;
   padding: 0;
 }
@@ -38,6 +42,8 @@ main{
   text-transform: uppercase;
   font-size: 24px;
   font-family: "Special Elite";
+  border: #ddd solid 2px;
+  border-radius: 4px;
 }
 
 h1{
@@ -53,7 +59,7 @@ p{
 
 table{
   border: collapse;
-  border: silver 1px solid;
+  border: var(--green) 5px solid;
   margin: 1em auto;
   padding: 0.4em;
 }
@@ -66,6 +72,8 @@ table input {
   height: 1.5em;
   margin: 0.1em;
   font-family: "Special Elite";
+  border: #eee solid 2px;
+  border-radius: 4px;
 }
 
 td{
