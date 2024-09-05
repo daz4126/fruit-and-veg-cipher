@@ -33,9 +33,9 @@ main{
 
 #solution{
   text-align: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  width: 13em;
+  display: flex;
+  justify-content: space-between;
+  width: 12em;
   margin: 0 auto;
 }
 
