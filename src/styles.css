@@ -35,7 +35,6 @@ main{
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  padding-left: 0.75em;
   width: 13em;
   margin: 0 auto;
 }
