@@ -57,11 +57,13 @@ surge({
     $._clues ++
     $.score.value -= 3
     if($.score.value <= 0){
-      $.finalScore.value = 0
-      $.game.hidden = true
-      $.gameOver.hidden = false
-      $.message.value = "Hard luck, you didn't break the code"
-      $._id = null
+        $.finalScore.value = 0
+        $.message.value = "Hard luck, you didn't break the code..."
+        $.game.hidden = true
+        $.gameOver.hidden = false
+        $.answer.value = `The word was ${$._word}`
+        $.share.hidden = true
+        $._id = null
     }
   },
   updateGrid: ($,e) => {
@@ -88,7 +90,7 @@ surge({
      $.correct.value = correctLetters
      if(correctLetters === 5){
          jsConfetti.addConfetti()
-         $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius!" : $.score.value > 6 ? "Impressive effort! You're a cipher expert!" : $.score.value > 3 ? "Well done ... you've got some cipher skills!" : "Phew ... you only just did it!")
+         $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius!" : $.score.value > 6 ? "Impressive effort! You're a cipher expert!" : $.score.value > 1 ? "Well done ... you've got some cipher skills!" : "Phew ... you only just did it!")
          $.finalScore.value = $.score.value
          $.game.hidden = true
          $.gameOver.hidden = false
@@ -109,6 +111,6 @@ surge({
      }
   },
   clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
-  share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`I cracked the 🍏Fruit And Veg🥦 Cipher!! My score was ${$.finalScore.value}!`}),
+  share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`I cracked the 🍏Fruit And Veg Cipher🥦!! My score was ${$.finalScore.value}!`}),
   connect: $ => $._id = Math.round((new Date().setHours(0,0,0,0) - new Date(2024,7,18))/3600000/24)
 })
