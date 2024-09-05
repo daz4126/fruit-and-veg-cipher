@@ -38,6 +38,7 @@ const gameOver = $ => {
   $.answer.value = `The word was ${$._word}`
   $.share.hidden = !$._id
   $._id = null
+  localStorage.setItem("fruit&veg-cipher:" + (new Date).toLocaleDateString(),true)
 }
 
 const win = $ => {
@@ -69,8 +70,6 @@ surge({
     $._word = ($._id !== null ? words[($._id * 2029 + 29)%words.length] : pickRandom(words)).toUpperCase()
     $._remainingWords = words.filter(w => w !== $._word)
     $.word.value = encrypt($._word,$._key)
-    if($._id) localStorage.setItem("fruit&veg-cipher:" + (new Date).toLocaleDateString(),true)
-    console.log(localStorage.getItem("fruit&veg-cipher:" + (new Date).toLocaleDateString()))
   },
   clue: $ => {
     const word = ($._id !== null ? words[($._id * 6929 + $._clues * 69)%words.length] : pickRandom($._remainingWords)).toUpperCase()
