@@ -42,7 +42,7 @@ const gameOver = $ => {
 
 const win = $ => {
    jsConfetti.addConfetti()
-   $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius!" :    $.score.value > 6 ? "Impressive effort! You're a cipher expert!" : $.score.value > 1 ? "Well done ... you've got some cipher skills!" : "Phew ... you only just did it!")
+   $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius!" : $.score.value > 6 ? "Impressive effort! You're clearly a cipher expert!" : $.score.value > 1 ? "Well done ... you've got some cipher skills!" : "Phew ... you only just did it!")
     $.finalScore.value = $.score.value
 }
 
@@ -68,6 +68,9 @@ surge({
     $._word = ($._id !== null ? words[($._id * 2029 + 29)%words.length] : pickRandom(words)).toUpperCase()
     $._remainingWords = words.filter(w => w !== $._word)
     $.word.value = encrypt($._word,$._key)
+    if($._id) localStorage.setItem("fruit&veg-cipher:" + (new Date).toLocaleDateString(),true)
+    console.log(localStorage.getItem("fruit&veg-cipher:" + (new Date).toLocaleDateString()))
+    console.log($._word)
   },
   clue: $ => {
     const word = ($._id !== null ? words[($._id * 6929 + $._clues * 69)%words.length] : pickRandom($._remainingWords)).toUpperCase()
@@ -114,5 +117,8 @@ surge({
   },
   clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
   share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`I cracked the 🍏Fruit And Veg Cipher🥦!! My score was ${$.finalScore.value}!`}),
-  connect: $ => $._id = Math.round((new Date().setHours(0,0,0,0) - new Date(2024,7,18))/3600000/24)
+  connect: $ => {
+    
+    $._id = localStorage.getItem("fruit&veg-cipher:" + (new Date).toLocaleDateString()) ? null :Math.round((new Date().setHours(0,0,0,0) - new Date(2024,7,18))/3600000/24)
+  }
 })
