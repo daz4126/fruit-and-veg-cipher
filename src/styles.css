@@ -82,7 +82,6 @@ td{
 }
 
 button{
-  display: inline-block;
   margin: 0.05em 1em;
   background: #60c923;
   border: none;
