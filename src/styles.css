@@ -132,6 +132,6 @@ button:hover{
   margin: 1em auto;
 }
 
-#gameOver{
+#gameOver, #gameOver .buttons{
   padding-top: 20px;
 }
