@@ -99,7 +99,7 @@ surge({
     })
   },
     check: $ => {
-     const correctLetters = Array.from($.solution.childNodes).reduce((sum,node,i) => sum + (node.value.trim()[0].toUpperCase() === $._word[i] ? 1 : 0),0)
+     const correctLetters = Array.from($.solution.childNodes).reduce((sum,node,i) => sum + (node.value && node.value.trim()[0].toUpperCase() === $._word[i] ? 1 : 0),0)
      $.correct.value = correctLetters
      if(correctLetters === 5){
         gameOver($)
