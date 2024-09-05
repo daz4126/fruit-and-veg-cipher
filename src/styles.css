@@ -60,6 +60,7 @@ p{
 table{
   border: collapse;
   border: var(--green) 5px solid;
+  border-radius: 12px;
   margin: 1em auto;
   padding: 0.4em;
 }
