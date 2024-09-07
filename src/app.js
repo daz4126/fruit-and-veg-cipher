@@ -52,8 +52,7 @@ const lose = $ => {
   $.message.value = "Hard luck, you didn't break the code..."
 }
 
-surge({
-  start: $ => {
+const startGame = $ => {
     localStorage.setItem("fruit&veg-cipher-played-already",true)
     $.instructions.hidden = true
     $.gameOver.hidden = true
@@ -71,7 +70,10 @@ surge({
     $._word = ($._id !== null ? words[($._id * 2029 + 29)%words.length] : pickRandom(words)).toUpperCase()
     $._remainingWords = words.filter(w => w !== $._word)
     $.word.value = encrypt($._word,$._key)
-  },
+}
+
+surge({
+  start: $ => startGame($),
   clue: $ => {
     const word = ($._id !== null ? words[($._id * 6929 + $._clues * 69)%words.length] : pickRandom($._remainingWords)).toUpperCase()
     $.clues.append(`<h1>${word}:</h1><h1>${encrypt(word,$._key)}</h1>`)
@@ -120,9 +122,7 @@ surge({
   share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`I cracked the 🍏Fruit And Veg Cipher🥦!! My score was ${$.finalScore.value}!`}),
   connect: $ => {
     if(localStorage.getItem("fruit&veg-cipher-played-already")){
-      $.instructions.hidden = true
-      $.gameOver.hidden = true
-      $.game.hidden = false
+      startGame($)
     }
     $._id = localStorage.getItem("fruit&veg-cipher:" + (new Date).toLocaleDateString()) ? null :Math.round((new Date().setHours(0,0,0,0) - new Date(2024,7,18))/3600000/24)
   }
