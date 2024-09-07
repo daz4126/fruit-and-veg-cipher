@@ -74,6 +74,11 @@ const startGame = $ => {
 
 surge({
   start: $ => startGame($),
+  instructions: $ => {
+    $.game.hidden = true
+    $.gameOver.hidden = true
+    $.instructions.hidden = false
+  },
   clue: $ => {
     const word = ($._id !== null ? words[($._id * 6929 + $._clues * 69)%words.length] : pickRandom($._remainingWords)).toUpperCase()
     $.clues.append(`<h1>${word}:</h1><h1>${encrypt(word,$._key)}</h1>`)
