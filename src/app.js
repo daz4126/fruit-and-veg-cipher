@@ -121,6 +121,7 @@ surge({
   connect: $ => {
     if(localStorage.getItem("fruit&veg-cipher-played-already")){
       $.instructions.hidden = true
+      $.gameOver.hidden = true
       $.game.hidden = false
     }
     $._id = localStorage.getItem("fruit&veg-cipher:" + (new Date).toLocaleDateString()) ? null :Math.round((new Date().setHours(0,0,0,0) - new Date(2024,7,18))/3600000/24)
