@@ -54,6 +54,7 @@ const lose = $ => {
 
 surge({
   start: $ => {
+    localStorage.setItem("fruit&veg-cipher-played-already",true)
     $.instructions.hidden = true
     $.gameOver.hidden = true
     $.game.hidden = false
@@ -118,7 +119,10 @@ surge({
   clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
   share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`I cracked the 🍏Fruit And Veg Cipher🥦!! My score was ${$.finalScore.value}!`}),
   connect: $ => {
-    
+    if(localStorage.getItem("fruit&veg-cipher-played-already")){
+      $.instructions.hidden = true
+      $.game.hidden = false
+    }
     $._id = localStorage.getItem("fruit&veg-cipher:" + (new Date).toLocaleDateString()) ? null :Math.round((new Date().setHours(0,0,0,0) - new Date(2024,7,18))/3600000/24)
   }
 })
