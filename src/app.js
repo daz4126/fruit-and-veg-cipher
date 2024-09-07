@@ -75,6 +75,7 @@ const startGame = $ => {
 surge({
   start: $ => startGame($),
   instructions: $ => {
+    localStorage.setItem("fruit&veg-cipher-played-already",false)
     $.game.hidden = true
     $.gameOver.hidden = true
     $.instructions.hidden = false
