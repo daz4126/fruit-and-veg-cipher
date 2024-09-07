@@ -35,7 +35,7 @@ main{
   text-align: center;
   display: flex;
   justify-content: space-between;
-  width: 14em;
+  max-width: 12.6em;
   margin: 0 auto;
 }
 
