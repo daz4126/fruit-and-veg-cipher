@@ -37,6 +37,7 @@ const gameOver = $ => {
   $.gameOver.hidden = false
   $.answer.value = `The word was ${$._word}`
   $.share.hidden = !$._id
+  if($._id !== null) localStorage.setItem("fruit&veg-cipher-played-already",true)
   $._id = null
   localStorage.setItem("fruit&veg-cipher:" + (new Date).toLocaleDateString(),true)
 }
@@ -53,7 +54,6 @@ const lose = $ => {
 }
 
 const startGame = $ => {
-    localStorage.setItem("fruit&veg-cipher-played-already",true)
     $.instructions.hidden = true
     $.gameOver.hidden = true
     $.game.hidden = false
