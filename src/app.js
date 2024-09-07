@@ -53,6 +53,7 @@ const lose = $ => {
 }
 
 const startGame = $ => {
+    console.log($._id)
     localStorage.setItem("fruit&veg-cipher-played-already",true)
     $.instructions.hidden = true
     $.gameOver.hidden = true
