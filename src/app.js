@@ -53,7 +53,6 @@ const lose = $ => {
 }
 
 const startGame = $ => {
-    console.log($._id)
     localStorage.setItem("fruit&veg-cipher-played-already",true)
     $.instructions.hidden = true
     $.gameOver.hidden = true
@@ -65,7 +64,7 @@ const startGame = $ => {
     $.score.value = 10
     $.correct.value = 0
     $.table.append(table)
-    $.mode.value = $._id ? `Daily Challenge: ${d.toLocaleDateString('en-us', { weekday:"short", month:"short", day:"numeric"})}` : "Practice Mode"
+    $.mode.value = $._id ? `Daily Challenge: ${new Date.toLocaleDateString(undefined, { weekday:"short", month:"short", day:"numeric"})}` : "Practice Mode"
     $._clues = 0
     $._key = ($._id !== null ? keys[($._id * 29 + 2029)%keys.length] : pickRandom(keys)).toUpperCase()
     $._word = ($._id !== null ? words[($._id * 2029 + 29)%words.length] : pickRandom(words)).toUpperCase()
