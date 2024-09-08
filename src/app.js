@@ -43,14 +43,17 @@ const gameOver = $ => {
 }
 
 const updateStats = $ => {
-  const games = localStorage.getItem("fruit&veg-cipher-games")
-  const wins =  localStorage.getItem("fruit&veg-cipher-wins")
-  const scores = localStorage.getItem("fruit&veg-cipher-scores")
-  const hiScore = localStorage.getItem("fruit&veg-cipher-hi-score")
-  localStorage.setItem("fruit&veg-cipher-games",games ? Number(games) + 1 : 1)
-  localStorage.setItem("fruit&veg-cipher-wins",wins ? $._score > 0 ? Number(wins) + 1 : wins : 1)
-  localStorage.setItem("fruit&veg-cipher-scores",scores ? Number(scores) + $._score : $._score)
-  localStorage.setItem("fruit&veg-cipher-hi-score", hiScore && $._score < Number(hiScore) ? hiScore : $._score)
+  const games = localStorage.getItem("fruit&veg-cipher-games") ? Number(localStorage.getItem("fruit&veg-cipher-games")) + 1 : 1
+  const wins =  localStorage.getItem("fruit&veg-cipher-wins") ? $._score > 0 ? Number(localStorage.getItem("fruit&veg-cipher-wins")) + 1 : localStorage.getItem("fruit&veg-cipher-wins") : 1
+  const scores = localStorage.getItem("fruit&veg-cipher-scores") ? Number(localStorage.getItem("fruit&veg-cipher-scores")) + $._score : $._score)
+  const hiScore = localStorage.getItem("fruit&veg-cipher-hi-score") hiScore && $._score < Number(localStorage.getItem("fruit&veg-cipher-hi-score")) ? localStorage.getItem("fruit&veg-cipher-hi-score") : $._score
+  localStorage.setItem("fruit&veg-cipher-games",games)
+  localStorage.setItem("fruit&veg-cipher-wins",wins)
+  localStorage.setItem("fruit&veg-cipher-scores",scores)
+  localStorage.setItem("fruit&veg-cipher-hi-score",hiScore)
+  $.average.value = (scores/games).toFixed(1)
+  $.winPercentage.value = (100*wins/games).toFixed(0)
+  $.hiScore.value = localStorage.getItem("fruit&veg-cipher-hi-score")
 }
 
 const win = $ => {
@@ -66,10 +69,6 @@ const lose = $ => {
 
 const startGame = $ => {
     localStorage.setItem("fruit&veg-cipher-played-already",true)
-    if(localStorage.getItem("fruit&veg-cipher-games"){
-      $.average.value = ((Number(localStorage.getItem("fruit&veg-cipher-scores"))/Number(localStorage.getItem("fruit&veg-cipher-games"))).toFixed(1)
-      $.hiScore.value = localStorage.getItem("fruit&veg-cipher-hi-score")
-    }
     $.instructions.hidden = true
     $.gameOver.hidden = true
     $.game.hidden = false
