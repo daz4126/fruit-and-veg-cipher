@@ -37,8 +37,8 @@ const gameOver = $ => {
   $.gameOver.hidden = false
   $.answer.value = `The word was ${$._word}`
   $.share.hidden = !$._id
+  if($._id) updateStats()
   $._id = null
-  updateStats($)
   localStorage.setItem("fruit&veg-cipher:" + (new Date).toLocaleDateString(),true)
 }
 
