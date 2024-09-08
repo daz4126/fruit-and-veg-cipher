@@ -38,13 +38,25 @@ const gameOver = $ => {
   $.answer.value = `The word was ${$._word}`
   $.share.hidden = !$._id
   $._id = null
+  updateStats($)
   localStorage.setItem("fruit&veg-cipher:" + (new Date).toLocaleDateString(),true)
+}
+
+const updateStats = $ => {
+  const games = localStorage.getItem("fruit&veg-cipher-games")
+  const wins =  localStorage.getItem("fruit&veg-cipher-wins")
+  const scores = localStorage.getItem("fruit&veg-cipher-scores")
+  const hiScore = localStorage.getItem("fruit&veg-cipher-hi-score")
+  localStorage.setItem("fruit&veg-cipher-games",games ? Number(games) + 1 : 1)
+  localStorage.setItem("fruit&veg-cipher-wins",wins ? $._score > 0 ? Number(wins) + 1 : wins : 1)
+  localStorage.setItem("fruit&veg-cipher-scores",scores ? Number(scores) + $._score : $._score)
+  localStorage.setItem("fruit&veg-cipher-hi-score", hiScore && $._score < Number(hiScore) ? hiScore : $._score)
 }
 
 const win = $ => {
    jsConfetti.addConfetti()
    $.message.value = ($.score.value > 9 ? "Perfect! You're obviously a Cipher Genius!" :    $.score.value > 6 ? "Impressive effort! You're a cipher expert!" : $.score.value > 1 ? "Well done ... you've got some cipher skills!" : "Phew ... you only just did it!")
-    $.finalScore.value = $.score.value
+   $.finalScore.value = $.score.value
 }
 
 const lose = $ => {
@@ -54,6 +66,11 @@ const lose = $ => {
 
 const startGame = $ => {
     localStorage.setItem("fruit&veg-cipher-played-already",true)
+    if(localStorage.getItem("fruit&veg-cipher-games"){
+      $.stats.hidden = false
+      $.average.value = ((Number(localStorage.getItem("fruit&veg-cipher-scores"))/Number(localStorage.getItem("fruit&veg-cipher-games"))).toFixed(1)
+      $.hiScore.value = localStorage.getItem("fruit&veg-cipher-hi-score")
+    }
     $.instructions.hidden = true
     $.gameOver.hidden = true
     $.game.hidden = false
