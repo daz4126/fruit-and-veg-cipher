@@ -37,16 +37,17 @@ const gameOver = $ => {
   $.gameOver.hidden = false
   $.answer.value = `The word was ${$._word}`
   $.share.hidden = !$._id
-  if($._id) updateStats()
+  if($._id) updateStats($)
   $._id = null
   localStorage.setItem("fruit&veg-cipher:" + (new Date).toLocaleDateString(),true)
 }
 
 const updateStats = $ => {
+  console.log($)
   const games = localStorage.getItem("fruit&veg-cipher-games") ? Number(localStorage.getItem("fruit&veg-cipher-games")) + 1 : 1
-  const wins =  localStorage.getItem("fruit&veg-cipher-wins") ? $._score > 0 ? Number(localStorage.getItem("fruit&veg-cipher-wins")) + 1 : localStorage.getItem("fruit&veg-cipher-wins") : 1
-  const scores = localStorage.getItem("fruit&veg-cipher-scores") ? Number(localStorage.getItem("fruit&veg-cipher-scores")) + $._score : $._score)
-  const hiScore = localStorage.getItem("fruit&veg-cipher-hi-score") hiScore && $._score < Number(localStorage.getItem("fruit&veg-cipher-hi-score")) ? localStorage.getItem("fruit&veg-cipher-hi-score") : $._score
+  const wins =  localStorage.getItem("fruit&veg-cipher-wins") ? $.score.value > 0 ? Number(localStorage.getItem("fruit&veg-cipher-wins")) + 1 : localStorage.getItem("fruit&veg-cipher-wins") : 1
+  const scores = localStorage.getItem("fruit&veg-cipher-scores") ? Number(localStorage.getItem("fruit&veg-cipher-scores")) + $.score.value : $.score.value
+const hiScore = localStorage.getItem("fruit&veg-cipher-hi-score") && $.score.value < Number(localStorage.getItem("fruit&veg-cipher-hi-score")) ? localStorage.getItem("fruit&veg-cipher-hi-score") : $.score.value
   localStorage.setItem("fruit&veg-cipher-games",games)
   localStorage.setItem("fruit&veg-cipher-wins",wins)
   localStorage.setItem("fruit&veg-cipher-scores",scores)
