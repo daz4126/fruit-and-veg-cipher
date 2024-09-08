@@ -67,7 +67,6 @@ const lose = $ => {
 const startGame = $ => {
     localStorage.setItem("fruit&veg-cipher-played-already",true)
     if(localStorage.getItem("fruit&veg-cipher-games"){
-      $.stats.hidden = false
       $.average.value = ((Number(localStorage.getItem("fruit&veg-cipher-scores"))/Number(localStorage.getItem("fruit&veg-cipher-games"))).toFixed(1)
       $.hiScore.value = localStorage.getItem("fruit&veg-cipher-hi-score")
     }
