@@ -37,24 +37,26 @@ const gameOver = $ => {
   $.gameOver.hidden = false
   $.answer.value = `The word was ${$._word}`
   $.share.hidden = !$._id
-  if($._id) updateStats($)
+  updateStats($)
   $._id = null
   localStorage.setItem("fruit&veg-cipher:" + (new Date).toLocaleDateString(),true)
 }
 
 const updateStats = $ => {
-  console.log($)
-  const games = localStorage.getItem("fruit&veg-cipher-games") ? Number(localStorage.getItem("fruit&veg-cipher-games")) + 1 : 1
-  const wins =  localStorage.getItem("fruit&veg-cipher-wins") ? $.score.value > 0 ? Number(localStorage.getItem("fruit&veg-cipher-wins")) + 1 : localStorage.getItem("fruit&veg-cipher-wins") : 1
-  const scores = localStorage.getItem("fruit&veg-cipher-scores") ? Number(localStorage.getItem("fruit&veg-cipher-scores")) + $.score.value : $.score.value
-const hiScore = localStorage.getItem("fruit&veg-cipher-hi-score") && $.score.value < Number(localStorage.getItem("fruit&veg-cipher-hi-score")) ? localStorage.getItem("fruit&veg-cipher-hi-score") : $.score.value
-  localStorage.setItem("fruit&veg-cipher-games",games)
-  localStorage.setItem("fruit&veg-cipher-wins",wins)
-  localStorage.setItem("fruit&veg-cipher-scores",scores)
-  localStorage.setItem("fruit&veg-cipher-hi-score",hiScore)
+  const games = localStorage.getItem("fruit&veg-cipher-games") || 0
+  const wins =  localStorage.getItem("fruit&veg-cipher-wins") || 0
+  const scores = localStorage.getItem("fruit&veg-cipher-scores") || 0
+  const hiScore = localStorage.getItem("fruit&veg-cipher-hi-score") || 0
+  const streak =  localStorage.getItem("fruit&veg-cipher-streak") || 0
+  localStorage.setItem("fruit&veg-cipher-games",games + $._id ? 1 : 0)
+  localStorage.setItem("fruit&veg-cipher-wins",wins + $._id && $.score > 0 ? 1 : 0)
+  localStorage.setItem("fruit&veg-cipher-scores",scores + $._id ? $._score : 0)
+  localStorage.setItem("fruit&veg-cipher-hi-score",$._id && $._score > hiScore ? $._score : hiScore)
+  localStorage.setItem("fruit&veg-cipher-streak",streak + $._id && $._score > 0 ? 1 : 0)
   $.average.value = (scores/games).toFixed(1)
   $.winPercentage.value = (100*wins/games).toFixed(0)
   $.hiScore.value = localStorage.getItem("fruit&veg-cipher-hi-score")
+  $.streak.value = localStorage.getItem("fruit&veg-cipher-streak")
 }
 
 const win = $ => {
