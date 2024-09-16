@@ -49,15 +49,15 @@ const updateStats = $ => {
   const hiScore = localStorage.getItem("fruit&veg-cipher-hi-score") || 0
   const streak =  (localStorage.getItem("fruit&veg-cipher-streak") || 0) + $._id && $._score > 0 ? 1 : 0
   console.log("updateStats")
-  console.log(games,wins,scores,hiScore,streak)
+  console.log(games,wins,scores,hiScore,streak,$._score)
   localStorage.setItem("fruit&veg-cipher-games",games)
   localStorage.setItem("fruit&veg-cipher-wins",wins)
   localStorage.setItem("fruit&veg-cipher-scores",scores)
-  localStorage.setItem("fruit&veg-cipher-hi-score",$._id && $._score > hiScore ? $._score : hiScore)
+  localStorage.setItem("fruit&veg-cipher-hi-score",$._id && $._score > Number(hiScore) ? $._score : hiScore)
   localStorage.setItem("fruit&veg-cipher-streak",streak)
   $.average.value = (scores/games).toFixed(1)
   $.winPercentage.value = (100*wins/games).toFixed(0)
-  $.hiScore.value = $._id && $._score > hiScore ? $._score : hiScore
+  $.hiScore.value = $._id && $._score > Number(hiScore) ? $._score : hiScore
   $.streak.value = streak
 }
 
