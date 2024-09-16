@@ -48,6 +48,7 @@ const updateStats = $ => {
   const scores = (localStorage.getItem("fruit&veg-cipher-scores") || 0) + $._id ? $._score : 0
   const hiScore = localStorage.getItem("fruit&veg-cipher-hi-score") || 0
   const streak =  (localStorage.getItem("fruit&veg-cipher-streak") || 0) + $._id && $._score > 0 ? 1 : 0
+  console.log("updateStats")
   console.log(games,wins,scores,hiScore,streak)
   localStorage.setItem("fruit&veg-cipher-games",games)
   localStorage.setItem("fruit&veg-cipher-wins",wins)
