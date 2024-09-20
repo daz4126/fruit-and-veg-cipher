@@ -43,11 +43,11 @@ const gameOver = $ => {
 }
 
 const updateStats = $ => {
-  const games = Number(localStorage.getItem("fruit&veg-cipher-games") || 0) + $._id ? 1 : 0
-  const wins =  Number(localStorage.getItem("fruit&veg-cipher-wins") || 0) + $._id && $.score.value > 0 ? 1 : 0
-  const scores = Number(localStorage.getItem("fruit&veg-cipher-scores") || 0) + $._id ? $.score.value : 0
+  const games = (Number(localStorage.getItem("fruit&veg-cipher-games")) || 0) + $._id ? 1 : 0
+  const wins =  (Number(localStorage.getItem("fruit&veg-cipher-wins")) || 0) + $._id && $.score.value > 0 ? 1 : 0
+  const scores = (Number(localStorage.getItem("fruit&veg-cipher-scores")) || 0) + $._id ? $.score.value : 0
   const hiScore = Number(localStorage.getItem("fruit&veg-cipher-hi-score")) || 0
-  const streak =  Number(localStorage.getItem("fruit&veg-cipher-streak") || 0) + $._id && $.score.value > 0 ? 1 : 0
+  const streak =  $._id && $.score.value > 0 ? (Number(localStorage.getItem("fruit&veg-cipher-streak")) || 0) + 1 : 0
   localStorage.setItem("fruit&veg-cipher-games",games)
   localStorage.setItem("fruit&veg-cipher-wins",wins)
   localStorage.setItem("fruit&veg-cipher-scores",scores)
