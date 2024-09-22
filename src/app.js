@@ -39,23 +39,24 @@ const gameOver = $ => {
   $.share.hidden = !$._id
   updateStats($)
   $._id = null
-  localStorage.setItem("fruit&veg-cipher:" + (new Date).toLocaleDateString(),true)
+  localStorage.setItem("fruit&veg-cipher-last-played",(new Date).toLocaleDateString())
 }
 
 const updateStats = $ => {
-  const games = (Number(localStorage.getItem("fruit&veg-cipher-games")) || 0) + $._id ? 1 : 0
-  const wins =  (Number(localStorage.getItem("fruit&veg-cipher-wins")) || 0) + $._id && $.score.value > 0 ? 1 : 0
-  const scores = (Number(localStorage.getItem("fruit&veg-cipher-scores")) || 0) + $._id ? $.score.value : 0
-  const hiScore = Number(localStorage.getItem("fruit&veg-cipher-hi-score")) || 0
-  const streak =  $._id && $.score.value > 0 ? (Number(localStorage.getItem("fruit&veg-cipher-streak")) || 0) + 1 : 0
-  localStorage.setItem("fruit&veg-cipher-games",games)
-  localStorage.setItem("fruit&veg-cipher-wins",wins)
-  localStorage.setItem("fruit&veg-cipher-scores",scores)
-  localStorage.setItem("fruit&veg-cipher-hi-score",$._id && $.score.value > hiScore ? $.score.value : hiScore)
-  localStorage.setItem("fruit&veg-cipher-streak",streak)
+  const score = $.score.value < 0 ? 0 : $.score.value
+  const games = (Number(localStorage.getItem("fruit-and-veg-cipher-games")) || 0) + ($._id ? 1 : 0)
+  const wins =  (Number(localStorage.getItem("fruit-and-veg-cipher-wins")) || 0) + ($._id && score > 0 ? 1 : 0)
+  const scores = (Number(localStorage.getItem("fruit-and-veg-cipher-scores")) || 0) + ($._id ? score : 0)
+  const hiScore = Number(localStorage.getItem("fruit-and-veg-cipher-hi-score")) || 0
+  const streak =  ($._id && score > 0) ? ((Number(localStorage.getItem("fruit-and-veg-cipher-streak")) || 0) + 1) : 0
+  localStorage.setItem("fruit-and-veg-cipher-games",games)
+  localStorage.setItem("fruit-and-veg-cipher-wins",wins)
+  localStorage.setItem("fruit-and-veg-cipher-scores",scores)
+  localStorage.setItem("fruit-and-veg-cipher-hi-score",($._id && score > hiScore) ? score : hiScore)
+  localStorage.setItem("fruit-and-veg-cipher-streak",streak)
   $.average.value = (scores/games).toFixed(1)
   $.winPercentage.value = (100*wins/games).toFixed(0)
-  $.hiScore.value = $._id && $.score.value > hiScore ? $.score.value : hiScore
+  $.hiScore.value = $._id && $.score.value > hiScore ? score : hiScore
   $.streak.value = streak
 }
 
@@ -145,7 +146,7 @@ surge({
   clear: $ =>  Array.from($.table.querySelectorAll("input")).forEach(cell => cell.value = ""),
   share: $ => navigator.share({title:"I cracked the Fruit And Veg Cipher!",text:`I cracked the 🍏Fruit And Veg Cipher🥦!! My score was ${$.finalScore.value}!`}),
   connect: $ => {
-    $._id = localStorage.getItem("fruit&veg-cipher:" + (new Date).toLocaleDateString()) ? null :Math.round((new Date().setHours(0,0,0,0) - new Date(2024,7,18))/3600000/24)
+    $._id = localStorage.getItem("fruit&veg-cipher-lastplayed") === (new Date).toLocaleDateString() ? null :Math.round((new Date().setHours(0,0,0,0) - new Date(2024,7,18))/3600000/24)
     if(localStorage.getItem("fruit&veg-cipher-played-already") === "true"){
       startGame($)
     }
