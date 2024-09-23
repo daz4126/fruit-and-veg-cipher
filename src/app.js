@@ -129,6 +129,8 @@ surge({
     })
   },
     check: $ => {
+     const empties = Array.from($.solution.childNodes).filter(node => node.value.trim() === "").length
+     if(empties > 0 && !confirm("You have some empty boxes. Are you sure you want to check?")) return
      const correctLetters = Array.from($.solution.childNodes).reduce((sum,node,i) => sum + (node.value && node.value.trim()[0].toUpperCase() === $._word[i] ? 1 : 0),0)
      $.correct.value = correctLetters
      $.plural.value = correctLetters === 1 ? "" : "s"
