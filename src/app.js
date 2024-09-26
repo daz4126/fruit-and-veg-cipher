@@ -48,7 +48,7 @@ const updateStats = $ => {
   const wins =  (Number(localStorage.getItem("fruit-and-veg-cipher-wins")) || 0) + ($._id && score > 0 ? 1 : 0)
   const scores = (Number(localStorage.getItem("fruit-and-veg-cipher-scores")) || 0) + ($._id ? score : 0)
   const hiScore = Number(localStorage.getItem("fruit-and-veg-cipher-hi-score")) || 0
-  const streak =  ($._id && score > 0) ? ((Number(localStorage.getItem("fruit-and-veg-cipher-streak")) || 0) + 1) : 0
+  const streak = (Number(localStorage.getItem("fruit-and-veg-cipher-streak")) || 0) + ($._id && score > 0 ? 1 : 0)
   localStorage.setItem("fruit-and-veg-cipher-games",games)
   localStorage.setItem("fruit-and-veg-cipher-wins",wins)
   localStorage.setItem("fruit-and-veg-cipher-scores",scores)
